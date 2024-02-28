@@ -1,0 +1,16 @@
+Work Tasks:
+
+Make it so only changes in the last item type field creates a new row
+Make it so that changes in item type changes options for its item selection, not creating a new one
+Dynamic creation of condition selection
+Dynamic fetching of item price
+Dynamic creation of quantity input field
+Dynamic calculation of item price in the chosen condition
+Dynamic calculation of the total price for the amount of items in the chosen condition
+Dynamic summation of total prices
+Create output field for total price
+Dynammically move output field for total price, when adding or removing a row 
+
+
+Make it possible to delete a row
+Create a clear button
