@@ -1,6 +1,5 @@
 Work Tasks:
 
-Make it so only changes in the last item type field creates a new row
 Make it so that changes in item type changes options for its item selection, not creating a new one
 Dynamic creation of condition selection
 Dynamic fetching of item price

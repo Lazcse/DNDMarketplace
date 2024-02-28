@@ -53,7 +53,7 @@ function reactChosenItem(event){
         selectList.appendChild(option);
     }
 
-
+    event.target.removeEventListener("change",reactChosenItem);
     createItemLine();
 }
 
