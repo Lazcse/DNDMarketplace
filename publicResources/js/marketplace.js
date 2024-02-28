@@ -15,6 +15,11 @@ function createItemLine(){
     selectList.setAttribute("data-placeholder","Choose type");
     document.body.appendChild(selectList);
 
+    var option = document.createElement("option");
+        option.setAttribute("value", "");
+        option.text = "-";
+        selectList.appendChild(option);
+
     //Create and append the options
     for (var i = 0; i < itemTypes.length; i++) {
         var option = document.createElement("option");
@@ -42,8 +47,15 @@ function reactChosenItem(event){
     //Create and append select list
     var selectList = document.createElement("select");
     selectList.setAttribute("id", "itemSelect");
-    selectList.setAttribute("class", "mySelect");
+    selectList.setAttribute("class", "chosen-select mySelect");
+    selectList.setAttribute("tabindex","-1");
+
     document.body.appendChild(selectList);
+
+    var option = document.createElement("option");
+        option.setAttribute("value", "");
+        option.text = "-";
+        selectList.appendChild(option);
 
     //Create and append the options
     for (var i = 0; i < itemTypes.length; i++) {
