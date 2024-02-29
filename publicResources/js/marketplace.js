@@ -42,7 +42,7 @@ function reactChosenItem(event){
     //Create and append select list
     var selectList = document.createElement("select");
     selectList.setAttribute("id", "itemSelect");
-    selectList.setAttribute("class", "mySelect");
+    selectList.setAttribute("class", "chosen-select mySelect");
     selectList.setAttribute("tabindex","-1");
 
     document.body.appendChild(selectList);
