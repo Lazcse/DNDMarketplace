@@ -60,7 +60,7 @@ function reactChosenItem(event){
         selectList.appendChild(option);
     }
     $(".chosen-select").chosen();
-    selectList.appendChild(".chosen-select")
+    selectList.appendChild(".chosen-select");
     event.target.removeEventListener("change",reactChosenItem);
     createItemLine();
 }
