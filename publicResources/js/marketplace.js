@@ -1,5 +1,6 @@
-createItemLine();
 let price = 0;
+let rowCounter = 0;
+
 
 
 
@@ -10,7 +11,8 @@ function createItemLine(){
 
     //Create and append select list
     var selectList = document.createElement("select");
-    selectList.setAttribute("id", "itemTypeSelect");
+    let tempId = "itemSelect" + rowCounter;
+    selectList.setAttribute("id", tempId);
     selectList.setAttribute("class", "mySelect");
     selectList.setAttribute("data-placeholder","Choose type");
     document.body.appendChild(selectList);
@@ -41,7 +43,8 @@ function reactChosenItem(event){
 
     //Create and append select list
     var selectList = document.createElement("select");
-    selectList.setAttribute("id", "itemSelect");
+    let tempId = "typeSelect" + rowCounter;
+    selectList.setAttribute("id", tempId);
     selectList.setAttribute("class", "chosen-select");
     selectList.setAttribute("tabindex","-1");
 
@@ -61,9 +64,10 @@ function reactChosenItem(event){
     }
 
     $(".chosen-select").chosen();
-    selectList.appendChild(".chosen-select");
+    selectList.append(".chosen-select");
     event.target.removeEventListener("change",reactChosenItem);
+    rowCounter++;
     createItemLine();
 }
 
-
+createItemLine();
