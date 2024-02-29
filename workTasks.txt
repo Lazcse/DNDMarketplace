@@ -1,6 +1,6 @@
 Work Tasks:
 
-Change item selection to a searchable selection
+Find a way to change the CSS of the searchable chosen select
 Make it so that changes in item type changes options for its item selection, not creating a new one
 Dynamic creation of condition selection
 Dynamic fetching of item price
