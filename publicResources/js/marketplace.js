@@ -42,7 +42,7 @@ function reactChosenItem(event){
     //Create and append select list
     var selectList = document.createElement("select");
     selectList.setAttribute("id", "itemSelect");
-    selectList.setAttribute("class", "chosen-select mySelect");
+    selectList.setAttribute("class", "chosen-select");
     selectList.setAttribute("tabindex","-1");
 
     document.body.appendChild(selectList);
@@ -59,6 +59,7 @@ function reactChosenItem(event){
         option.text = itemTypes[i];
         selectList.appendChild(option);
     }
+
     $(".chosen-select").chosen();
     selectList.appendChild(".chosen-select");
     event.target.removeEventListener("change",reactChosenItem);
