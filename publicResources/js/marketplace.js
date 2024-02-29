@@ -59,7 +59,8 @@ function reactChosenItem(event){
         option.text = itemTypes[i];
         selectList.appendChild(option);
     }
-
+    $(".chosen-select").chosen();
+    selectList.appendChild(".chosen-select")
     event.target.removeEventListener("change",reactChosenItem);
     createItemLine();
 }
