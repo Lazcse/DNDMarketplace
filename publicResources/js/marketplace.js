@@ -10,21 +10,21 @@ function createItemLine(){
     document.body.appendChild(breakLine);
 
     //Create and append select list
-    var selectList = document.createElement("select");
+    var typeSelect = document.createElement("select");
     let tempId = "typeSelect" + rowCounter;
-    selectList.setAttribute("id", tempId);
-    selectList.setAttribute("class", "mySelect");
-    selectList.setAttribute("data-placeholder","Choose type");
-    document.body.appendChild(selectList);
+    typeSelect.setAttribute("id", tempId);
+    typeSelect.setAttribute("class", "mySelect");
+    typeSelect.setAttribute("data-placeholder","Choose type");
+    document.body.appendChild(typeSelect);
 
     //Create and append the options
     for (var i = 0; i < itemTypes.length; i++) {
         var option = document.createElement("option");
         option.setAttribute("value", itemTypes[i]);
         option.text = itemTypes[i];
-        selectList.appendChild(option);
+        typeSelect.appendChild(option);
     }
-    selectList.addEventListener("change",reactChosenItem);
+    itemSelect.addEventListener("change",reactChosenItem);
 }
 
 function reactChosenItem(event){
@@ -42,30 +42,30 @@ function reactChosenItem(event){
     }
 
     //Create and append select list
-    var selectList = document.createElement("select");
+    var itemSelect = document.createElement("select");
     let tempId = "itemSelect" + rowCounter;
-    selectList.setAttribute("id", tempId);
-    selectList.setAttribute("class", "chosen-select");
-    selectList.setAttribute("tabindex","-1");
+    itemSelect.setAttribute("id", tempId);
+    itemSelect.setAttribute("class", "chosen-select");
+    itemSelect.setAttribute("tabindex","-1");
 
-    document.body.appendChild(selectList);
+    document.body.appendChild(itemSelect);
 
     var option = document.createElement("option");
         option.setAttribute("value", "");
         option.text = "-";
-        selectList.appendChild(option);
+        itemSelect.appendChild(option);
 
     //Create and append the options
     for (var i = 0; i < itemTypes.length; i++) {
         var option = document.createElement("option");
         option.setAttribute("value", itemTypes[i]);
         option.text = itemTypes[i];
-        selectList.appendChild(option);
+        itemSelect.appendChild(option);
     }
 
     $('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
-    selectList.append(".chosen-select");
+    itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenItem);
     typeSelect.addEventListener("change",changeChosenItem);
     rowCounter++;
@@ -76,16 +76,18 @@ function changeChosenItem(event){
     let typeSelect = event.target;
     let idNumber = typeSelect.id.substring(10);
     console.log(idNumber);
-    let selectList = document.getElementById("itemSelect" + idNumber);
-    console.log(selectList.value);
-    removeChildrenElements(selectList);
+    let itemSelect = document.getElementById("itemSelect" + idNumber);
+    console.log(itemSelect.value);
+    removeChildrenElements(itemSelect);
+
+
+    $('.chosen-select').trigger('chosen:updated');
 }
 
 function removeChildrenElements(parentElement){
     while (parentElement.firstChild) {
         parentElement.lastChild.remove();
     }
-    $('.chosen-select').trigger('chosen:updated');
 }
 
 
