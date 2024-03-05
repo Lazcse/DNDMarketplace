@@ -11,7 +11,7 @@ function createItemLine(){
 
     //Create and append select list
     var selectList = document.createElement("select");
-    let tempId = "itemSelect" + rowCounter;
+    let tempId = "typeSelect" + rowCounter;
     selectList.setAttribute("id", tempId);
     selectList.setAttribute("class", "mySelect");
     selectList.setAttribute("data-placeholder","Choose type");
@@ -43,7 +43,7 @@ function reactChosenItem(event){
 
     //Create and append select list
     var selectList = document.createElement("select");
-    let tempId = "typeSelect" + rowCounter;
+    let tempId = "itemSelect" + rowCounter;
     selectList.setAttribute("id", tempId);
     selectList.setAttribute("class", "chosen-select");
     selectList.setAttribute("tabindex","-1");
@@ -63,23 +63,34 @@ function reactChosenItem(event){
         selectList.appendChild(option);
     }
 
+    $('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
     selectList.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenItem);
-    //typeSelect.addEventListener("change",changeChosenItem);
+    typeSelect.addEventListener("change",changeChosenItem);
     rowCounter++;
     createItemLine();
 }
 
 function changeChosenItem(event){
-
+    let typeSelect = event.target;
+    let idNumber = typeSelect.id.substring(10);
+    console.log(idNumber);
+    let selectList = document.getElementById("itemSelect" + idNumber);
+    console.log(selectList.value);
+    removeChildrenElements(selectList);
 }
 
 function removeChildrenElements(parentElement){
     while (parentElement.firstChild) {
-        parentElement.removeChild(parentElement.firstChild);
+        parentElement.lastChild.remove();
     }
+    $('.chosen-select').trigger('chosen:updated');
 }
 
+
+function testChosen(event){
+    console.log(event.target.value);
+}
 
 createItemLine();
