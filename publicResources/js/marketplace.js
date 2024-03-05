@@ -66,13 +66,13 @@ function changeChosenItem(event){
 function createItemList(parentSelect, typeSelect){
 
     if(typeSelect.value === "Armor"){
-        var itemTypes = ["Helmet","Chestplate","Boots"];
+        var itemList = ["Helmet","Chestplate","Boots"];
     }else if(typeSelect.value === "Gemstone"){
-        var itemTypes = ["Ruby","Sapphire","Emerald"];
+        var itemList = ["Ruby","Sapphire","Emerald"];
     } else if(typeSelect.value === "Weapons"){
-        var itemTypes = ["Crossbow","Longsword","Short Sword"];
+        var itemList = ["Crossbow","Longsword","Short Sword"];
     }else{
-        var itemTypes = [];
+        var itemList = [];
     }
 
 
@@ -82,10 +82,10 @@ function createItemList(parentSelect, typeSelect){
         parentSelect.appendChild(option);
 
     //Create and append the options
-    for (var i = 0; i < itemTypes.length; i++) {
+    for (var i = 0; i < itemList.length; i++) {
         var option = document.createElement("option");
-        option.setAttribute("value", itemTypes[i]);
-        option.text = itemTypes[i];
+        option.setAttribute("value", itemList[i]);
+        option.text = itemList[i];
         parentSelect.appendChild(option);
     }
 }
