@@ -28,14 +28,14 @@ function createItemLine(){
 }
 
 function reactChosenItem(event){
-    var select = event.target;
-    console.log(select.value);
+    var typeSelect = event.target;
+    console.log(typeSelect.value);
 
-    if(select.value === "Armor"){
+    if(typeSelect.value === "Armor"){
         var itemTypes = ["Helmet","Chestplate","Boots"];
-    }else if(select.value === "Gemstone"){
+    }else if(typeSelect.value === "Gemstone"){
         var itemTypes = ["Ruby","Sapphire","Emerald"];
-    } else if(select.value === "Weapons"){
+    } else if(typeSelect.value === "Weapons"){
         var itemTypes = ["Crossbow","Longsword","Short Sword"];
     }else{
         var itemTypes = [];
@@ -65,9 +65,21 @@ function reactChosenItem(event){
 
     $(".chosen-select").chosen();
     selectList.append(".chosen-select");
-    event.target.removeEventListener("change",reactChosenItem);
+    typeSelect.removeEventListener("change",reactChosenItem);
+    //typeSelect.addEventListener("change",changeChosenItem);
     rowCounter++;
     createItemLine();
 }
+
+function changeChosenItem(event){
+
+}
+
+function removeChildrenElements(parentElement){
+    while (parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+    }
+}
+
 
 createItemLine();
