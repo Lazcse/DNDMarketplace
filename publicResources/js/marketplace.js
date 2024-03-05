@@ -63,7 +63,7 @@ function reactChosenItem(event){
         itemSelect.appendChild(option);
     }
 
-    $('.chosen-select').on('change', testChosen);
+    //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenItem);
@@ -90,9 +90,5 @@ function removeChildrenElements(parentElement){
     }
 }
 
-
-function testChosen(event){
-    console.log(event.target.value);
-}
 
 createItemLine();
