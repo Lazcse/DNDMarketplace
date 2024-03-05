@@ -31,16 +31,6 @@ function reactChosenItem(event){
     var typeSelect = event.target;
     console.log(typeSelect.value);
 
-    if(typeSelect.value === "Armor"){
-        var itemTypes = ["Helmet","Chestplate","Boots"];
-    }else if(typeSelect.value === "Gemstone"){
-        var itemTypes = ["Ruby","Sapphire","Emerald"];
-    } else if(typeSelect.value === "Weapons"){
-        var itemTypes = ["Crossbow","Longsword","Short Sword"];
-    }else{
-        var itemTypes = [];
-    }
-
     //Create and append select list
     var itemSelect = document.createElement("select");
     let tempId = "itemSelect" + rowCounter;
@@ -50,18 +40,7 @@ function reactChosenItem(event){
 
     document.body.appendChild(itemSelect);
 
-    var option = document.createElement("option");
-        option.setAttribute("value", "");
-        option.text = "-";
-        itemSelect.appendChild(option);
-
-    //Create and append the options
-    for (var i = 0; i < itemTypes.length; i++) {
-        var option = document.createElement("option");
-        option.setAttribute("value", itemTypes[i]);
-        option.text = itemTypes[i];
-        itemSelect.appendChild(option);
-    }
+    createItemList(itemSelect, typeSelect);
 
     //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
@@ -82,6 +61,33 @@ function changeChosenItem(event){
 
 
     $('.chosen-select').trigger('chosen:updated');
+}
+
+function createItemList(parentSelect, typeSelect){
+
+    if(typeSelect.value === "Armor"){
+        var itemTypes = ["Helmet","Chestplate","Boots"];
+    }else if(typeSelect.value === "Gemstone"){
+        var itemTypes = ["Ruby","Sapphire","Emerald"];
+    } else if(typeSelect.value === "Weapons"){
+        var itemTypes = ["Crossbow","Longsword","Short Sword"];
+    }else{
+        var itemTypes = [];
+    }
+
+
+    var option = document.createElement("option");
+        option.setAttribute("value", "");
+        option.text = "-";
+        parentSelect.appendChild(option);
+
+    //Create and append the options
+    for (var i = 0; i < itemTypes.length; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", itemTypes[i]);
+        option.text = itemTypes[i];
+        parentSelect.appendChild(option);
+    }
 }
 
 function removeChildrenElements(parentElement){
