@@ -58,7 +58,7 @@ function changeChosenItem(event){
     let itemSelect = document.getElementById("itemSelect" + idNumber);
     console.log(itemSelect.value);
     removeChildrenElements(itemSelect);
-
+    createItemList(itemSelect, typeSelect);
 
     $('.chosen-select').trigger('chosen:updated');
 }
