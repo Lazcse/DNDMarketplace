@@ -1,7 +1,6 @@
 Work Tasks:
 
-Find a way to change the CSS of the searchable chosen select
-Make it so that changes in item type changes options for its item selection, not creating a new one
+Find a way to change the CSS of the searchable chosen select and change css to at least add margin
 Dynamic creation of condition selection
 Dynamic fetching of item price
 Dynamic creation of quantity input field
