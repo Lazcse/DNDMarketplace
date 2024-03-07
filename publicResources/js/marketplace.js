@@ -1,10 +1,11 @@
 let price = 0;
-let rowCounter = 0;
+let rowCounter = -1;
 
 
 
 
 function createItemLine(){
+    rowCounter++;
     var itemTypes = ["Choose Type","Armor","Gemstone","Weapons"];
     const breakLine = document.createElement("br");
     document.body.appendChild(breakLine);
@@ -24,17 +25,17 @@ function createItemLine(){
         option.text = itemTypes[i];
         typeSelect.appendChild(option);
     }
-    typeSelect.addEventListener("change",reactChosenItem);
+    typeSelect.addEventListener("change",reactChosenType);
 }
 
-function reactChosenItem(event){
+function reactChosenType(event){
     var typeSelect = event.target;
     console.log(typeSelect.value);
 
     //Create and append select list
     var itemSelect = document.createElement("select");
-    let tempId = "itemSelect" + rowCounter;
-    itemSelect.setAttribute("id", tempId);
+    let tempItemId = "itemSelect" + rowCounter;
+    itemSelect.setAttribute("id", tempItemId);
     itemSelect.setAttribute("class", "chosen-select");
     itemSelect.setAttribute("tabindex","-1");
 
@@ -42,12 +43,23 @@ function reactChosenItem(event){
 
     createItemList(itemSelect, typeSelect);
 
+    var conditionSelect = document.createElement("select");
+    let tempConditionId = "conditionSelect" + rowCounter;
+    conditionSelect.setAttribute("id", tempConditionId);
+    conditionSelect.setAttribute("class", "chosen-select");
+    conditionSelect.setAttribute("tabindex","-1");
+
+    document.body.appendChild(conditionSelect);
+
+    createConditionList(conditionSelect, typeSelect);
+
     //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
-    typeSelect.removeEventListener("change",reactChosenItem);
+    typeSelect.removeEventListener("change",reactChosenType);
     typeSelect.addEventListener("change",changeChosenItem);
-    rowCounter++;
+
+
     createItemLine();
 }
 
@@ -88,6 +100,22 @@ function createItemList(parentSelect, typeSelect){
         option.text = itemList[i];
         parentSelect.appendChild(option);
     }
+}
+
+function createConditionList(typeSelect){
+    switch(typeSelect.value){
+        case "Armor":
+        case "Weapons":
+            var conditionList = ["New","Used","Tattered"];
+            break;
+        case "Gemstone":
+            var conditionList = ["Perfect","Good","Bad"];
+            break;
+        default:
+            var conditionList = [];
+            break;
+    }
+
 }
 
 function removeChildrenElements(parentElement){
