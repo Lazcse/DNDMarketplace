@@ -53,15 +53,33 @@ function reactChosenType(event){
 
     createConditionList(conditionSelect, typeSelect);
 
+    var quantityField = document.createElement("input");
+    quantityField.setAttribute("type", "number");
+    quantityField.setAttribute("id", "quantityField" + rowCounter);
+    quantityField.setAttribute("class", "textField");
+    quantityField.setAttribute("min", "1");
+    quantityField.setAttribute("value", "1");
+    quantityField.setAttribute("max", "100");
+
+    document.body.appendChild(quantityField);
 
     var standardPriceField = document.createElement("input");
     standardPriceField.setAttribute("type", "text");
     standardPriceField.setAttribute("id", "standardPriceField" + rowCounter);
-    standardPriceField.setAttribute("class", "priceField");
+    standardPriceField.setAttribute("class", "textField");
     standardPriceField.setAttribute("value", "0");
     standardPriceField.setAttribute("readonly", "true");
 
     document.body.appendChild(standardPriceField);
+
+    var sellingPriceField = document.createElement("input");
+    sellingPriceField.setAttribute("type", "text");
+    sellingPriceField.setAttribute("id", "sellingPriceField" + rowCounter);
+    sellingPriceField.setAttribute("class", "textField");
+    sellingPriceField.setAttribute("value", "0");
+    sellingPriceField.setAttribute("readonly", "true");
+
+    document.body.appendChild(sellingPriceField);
 
     //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
@@ -76,15 +94,23 @@ function reactChosenType(event){
 function changeChosenItem(event){
     let typeSelect = event.target;
     let idNumber = typeSelect.id.substring(10);
-    console.log(idNumber);
+    
     let itemSelect = document.getElementById("itemSelect" + idNumber);
-    console.log(itemSelect.value);
     removeChildrenElements(itemSelect);
     createItemList(itemSelect, typeSelect);
 
     let conditionSelect = document.getElementById("conditionSelect" + idNumber);
     removeChildrenElements(conditionSelect)
     createConditionList(conditionSelect, typeSelect);
+
+    let quantityField = document.getElementById("quantityField" + idNumber);
+    quantityField.value = 1;
+
+    let standardPriceField = document.getElementById("standardPriceField" + idNumber);
+    standardPriceField.value = 0;
+
+    let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
+    sellingPriceField.value = 0;
 
     $('.chosen-select').trigger('chosen:updated');
 }
