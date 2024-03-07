@@ -1,7 +1,7 @@
 Work Tasks:
 
 Find a way to change the CSS of the searchable chosen select and change css to at least add margin
-Dynamic creation of condition selection
+
 Dynamic fetching of item price
 Dynamic creation of quantity input field
 Dynamic calculation of item price in the chosen condition

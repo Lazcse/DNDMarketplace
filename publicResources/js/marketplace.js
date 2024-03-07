@@ -53,6 +53,16 @@ function reactChosenType(event){
 
     createConditionList(conditionSelect, typeSelect);
 
+
+    var standardPriceField = document.createElement("input");
+    standardPriceField.setAttribute("type", "text");
+    standardPriceField.setAttribute("id", "standardPriceField" + rowCounter);
+    standardPriceField.setAttribute("class", "priceField");
+    standardPriceField.setAttribute("value", "0");
+    standardPriceField.setAttribute("readonly", "true");
+
+    document.body.appendChild(standardPriceField);
+
     //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
