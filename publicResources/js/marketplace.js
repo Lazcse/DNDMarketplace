@@ -80,12 +80,22 @@ function reactChosenType(event){
     sellingPriceField.setAttribute("readonly", "true");
 
     document.body.appendChild(sellingPriceField);
+    
+    var totalPriceField = document.createElement("input");
+    totalPriceField.setAttribute("type", "text");
+    totalPriceField.setAttribute("id", "totalPriceField" + rowCounter);
+    totalPriceField.setAttribute("class", "textField");
+    totalPriceField.setAttribute("value", "0");
+    totalPriceField.setAttribute("readonly", "true");
+
+    document.body.appendChild(totalPriceField);
 
     //$('.chosen-select').on('change', testChosen);
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenType);
     typeSelect.addEventListener("change",changeChosenItem);
+    
 
 
     createItemLine();
@@ -111,6 +121,9 @@ function changeChosenItem(event){
 
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
     sellingPriceField.value = 0;
+
+    let totalPriceField = document.getElementById("totalPriceField" + idNumber);
+    totalPriceField.value = 0;
 
     $('.chosen-select').trigger('chosen:updated');
 }
