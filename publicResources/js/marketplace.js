@@ -91,20 +91,6 @@ function createItemList(parentSelect, typeSelect){
             var itemList = [];
             break;
     }
-
-
-    var option = document.createElement("option");
-        option.setAttribute("value", "");
-        option.text = "-";
-        parentSelect.appendChild(option);
-
-    //Create and append the options
-    for (var i = 0; i < itemList.length; i++) {
-        var option = document.createElement("option");
-        option.setAttribute("value", itemList[i]);
-        option.text = itemList[i];
-        parentSelect.appendChild(option);
-    }
 }
 
 function createConditionList(typeSelect){
@@ -121,6 +107,23 @@ function createConditionList(typeSelect){
             break;
     }
 
+    createSelectList(typeSelect, conditionList);
+
+}
+
+function createSelectList(parentSelect, list){
+    var option = document.createElement("option");
+        option.setAttribute("value", "");
+        option.text = "-";
+        parentSelect.appendChild(option);
+
+    //Create and append the options
+    for (var i = 0; i < list.length; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", list[i]);
+        option.text = list[i];
+        parentSelect.appendChild(option);
+    }
 }
 
 function removeChildrenElements(parentElement){
