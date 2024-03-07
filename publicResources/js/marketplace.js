@@ -77,14 +77,19 @@ function changeChosenItem(event){
 
 function createItemList(parentSelect, typeSelect){
 
-    if(typeSelect.value === "Armor"){
-        var itemList = ["Helmet","Chestplate","Boots"];
-    }else if(typeSelect.value === "Gemstone"){
-        var itemList = ["Ruby","Sapphire","Emerald"];
-    } else if(typeSelect.value === "Weapons"){
-        var itemList = ["Crossbow","Longsword","Short Sword"];
-    }else{
-        var itemList = [];
+    switch(typeSelect.value){
+        case "Armor":
+            var itemList = ["Helmet","Chestplate","Boots"];
+            break;
+        case "Gemstone":
+            var itemList = ["Ruby","Sapphire","Emerald"];
+            break;
+        case "Weapons":
+            var itemList = ["Crossbow","Longsword","Short Sword"];
+            break;
+        default:
+            var itemList = [];
+            break;
     }
 
 
