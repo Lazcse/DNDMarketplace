@@ -72,6 +72,10 @@ function changeChosenItem(event){
     removeChildrenElements(itemSelect);
     createItemList(itemSelect, typeSelect);
 
+    let conditionSelect = document.getElementById("conditionSelect" + idNumber);
+    removeChildrenElements(conditionSelect)
+    createConditionList(conditionSelect, typeSelect);
+
     $('.chosen-select').trigger('chosen:updated');
 }
 
@@ -91,23 +95,24 @@ function createItemList(parentSelect, typeSelect){
             var itemList = [];
             break;
     }
+    createSelectList(parentSelect, itemList);
 }
 
-function createConditionList(typeSelect){
+function createConditionList(parentSelect, typeSelect){
     switch(typeSelect.value){
         case "Armor":
         case "Weapons":
             var conditionList = ["New","Used","Tattered"];
             break;
         case "Gemstone":
-            var conditionList = ["Perfect","Good","Bad"];
+            var conditionList = ["Perfect", "Flawed", "Cracked"];
             break;
         default:
             var conditionList = [];
             break;
     }
 
-    createSelectList(typeSelect, conditionList);
+    createSelectList(parentSelect, conditionList);
 
 }
 
