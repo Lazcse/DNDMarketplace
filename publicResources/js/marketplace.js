@@ -90,7 +90,7 @@ function reactChosenType(event){
 
     document.body.appendChild(totalPriceField);
 
-    //$('.chosen-select').on('change', testChosen);
+    $('.chosen-select').on('change', updateInputFields);
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenType);
@@ -114,16 +114,16 @@ function changeChosenItem(event){
     createConditionList(conditionSelect, typeSelect);
 
     let quantityField = document.getElementById("quantityField" + idNumber);
-    quantityField.value = 1;
+    quantityField.setAttribute("value", 1);
 
     let standardPriceField = document.getElementById("standardPriceField" + idNumber);
-    standardPriceField.value = 0;
+    standardPriceField.setAttribute("value", 1);
 
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
-    sellingPriceField.value = 0;
+    sellingPriceField.setAttribute("value", 1);
 
     let totalPriceField = document.getElementById("totalPriceField" + idNumber);
-    totalPriceField.value = 0;
+    totalPriceField.setAttribute("value", 1);
 
     $('.chosen-select').trigger('chosen:updated');
 }
@@ -186,5 +186,18 @@ function removeChildrenElements(parentElement){
     }
 }
 
+function updateInputFields(event){
+    let itemSelect = event.target;
+    let idNumber = itemSelect.id.substring(10);
+
+    let standardPriceField = document.getElementById("standardPriceField" + idNumber);
+    standardPriceField.setAttribute("value", 1);
+
+    let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
+    sellingPriceField.setAttribute("value", 1);
+
+    let totalPriceField = document.getElementById("totalPriceField" + idNumber);
+    totalPriceField.setAttribute("value", 1);
+}
 
 createItemLine();
