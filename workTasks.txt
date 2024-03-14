@@ -1,9 +1,7 @@
 Work Tasks:
 
 Find a way to change the CSS of the searchable chosen select and change css to at least add margin
-Make id fetching handle multi digited ids
 
-Dynamic fetching of dummy item price
 Dynamic fetching of the real item prices
 Update total price for row on change in quantity
 

@@ -91,6 +91,8 @@ function reactChosenType(event){
     document.body.appendChild(totalPriceField);
 
     $('.chosen-select').on('change', updateInputFields);
+    $(".chosen-select").chosen({width: "100px"});
+    $(".chosen-select").chosen({margin: "10px"});
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenType);
@@ -103,7 +105,7 @@ function reactChosenType(event){
 
 function changeChosenItem(event){
     let typeSelect = event.target;
-    let idNumber = typeSelect.id.substring(10);
+    let idNumber = typeSelect.id.replace(/\D/g, "");
     
     let itemSelect = document.getElementById("itemSelect" + idNumber);
     removeChildrenElements(itemSelect);
@@ -186,16 +188,21 @@ function removeChildrenElements(parentElement){
     }
 }
 
+
 function updateInputFields(event){
-    let itemSelect = event.target;
-    let idNumber = itemSelect.id.substring(10);
-    
+    let select = event.target;
+    let idNumber = select.id.replace(/\D/g, "");
+
+    let item = document.getElementById("itemSelect" + idNumber);
+    let condition = document.getElementById("conditionSelect" + idNumber);
+    console.log(item.value);
+    console.log(condition.value);
 
     let standardPriceField = document.getElementById("standardPriceField" + idNumber);
-    standardPriceField.setAttribute("value", findStandardPrice(itemSelect.value));
+    standardPriceField.setAttribute("value", findStandardPrice(item.value));
 
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
-    sellingPriceField.setAttribute("value", 1);
+    sellingPriceField.setAttribute("value", calculateSellingPrice(standardPriceField.value, condition.value));
 
     let totalPriceField = document.getElementById("totalPriceField" + idNumber);
     totalPriceField.setAttribute("value", 1);
@@ -236,6 +243,31 @@ function findStandardPrice(item){
             break;
     }
     return price;
+
+}
+
+function calculateSellingPrice(standardPrice, condition){
+    let price = 0;
+
+    switch(condition){
+        case "Used":
+        case "Flawed":
+            price = standardPrice * 0.50;
+            break;
+        case "Tattered":
+        case "Cracked":
+            price = standardPrice * 0.25;
+            break;
+        case "New":
+        case "Perfect":
+        default:
+            price = standardPrice;
+            break;
+    }
+    return price;
+}
+
+function calculateTotalPrice(){
 
 }
 
