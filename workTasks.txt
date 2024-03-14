@@ -5,8 +5,8 @@ Find a way to change the CSS of the searchable chosen select and change css to a
 Dynamic fetching of the real item prices
 Update total price for row on change in quantity
 
-Dynamic calculation of item price in the chosen condition
-Dynamic calculation of the total price for the amount of items in the chosen condition
+Make totalPrice for a line update, when quantity changes
+
 Dynamic summation of total prices
 Create output field for total price
 Dynammically move output field for total price, when adding or removing a row 

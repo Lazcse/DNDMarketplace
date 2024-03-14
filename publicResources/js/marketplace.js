@@ -204,8 +204,10 @@ function updateInputFields(event){
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
     sellingPriceField.setAttribute("value", calculateSellingPrice(standardPriceField.value, condition.value));
 
+    let quantityField = document.getElementById("quantityField" + idNumber);
+
     let totalPriceField = document.getElementById("totalPriceField" + idNumber);
-    totalPriceField.setAttribute("value", 1);
+    totalPriceField.setAttribute("value", calculateTotalPrice(sellingPriceField.value, quantityField.value));
 }
 
 function findStandardPrice(item){
@@ -267,7 +269,8 @@ function calculateSellingPrice(standardPrice, condition){
     return price;
 }
 
-function calculateTotalPrice(){
+function calculateTotalPrice(sellingPrice, quantity){
+    return sellingPrice * quantity;
 
 }
 
