@@ -189,15 +189,54 @@ function removeChildrenElements(parentElement){
 function updateInputFields(event){
     let itemSelect = event.target;
     let idNumber = itemSelect.id.substring(10);
+    
 
     let standardPriceField = document.getElementById("standardPriceField" + idNumber);
-    standardPriceField.setAttribute("value", 1);
+    standardPriceField.setAttribute("value", findStandardPrice(itemSelect.value));
 
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
     sellingPriceField.setAttribute("value", 1);
 
     let totalPriceField = document.getElementById("totalPriceField" + idNumber);
     totalPriceField.setAttribute("value", 1);
+}
+
+function findStandardPrice(item){
+    let price = 0;
+    switch(item){
+        case "Helmet":
+            price = 50;
+            break;
+        case "Chestplate":
+            price = 200;
+            break;
+        case "Boots":
+            price = 25;
+            break;
+        case "Ruby":
+            price = 250;
+            break;
+        case "Sapphire":
+            price = 150;
+            break;
+        case "Emerald":
+            price = 200;
+            break;
+        case "Crossbow":
+            price = 75;
+            break;
+        case "Longsword":
+            price = 50;
+            break;
+        case "Short Sword":
+            price = 10;
+            break;
+        default:
+            price = 0;
+            break;
+    }
+    return price;
+
 }
 
 createItemLine();
