@@ -3,6 +3,30 @@ let rowCounter = -1;
 
 
 
+var completePriceField = document.createElement("input");
+completePriceField.setAttribute("type", "text");
+completePriceField.setAttribute("id", "completePriceField");
+completePriceField.setAttribute("class", "textField");
+completePriceField.setAttribute("value", "0");
+completePriceField.setAttribute("readonly", "true");
+
+var completePriceLabel = document.createElement("label");
+completePriceLabel.setAttribute("for", "completePriceField");
+completePriceLabel.setAttribute("class", "label");
+completePriceLabel.innerHTML = "Total Price: ";
+
+completePriceField.style.position = "fixed"; 
+completePriceField.style.bottom = "20%";
+completePriceField.style.right = "20%";
+
+completePriceLabel.style.position = "fixed"; 
+completePriceLabel.style.bottom = "25%";
+completePriceLabel.style.right = "20%";
+
+document.body.appendChild(completePriceField);
+document.body.appendChild(completePriceLabel);
+
+
 
 function createItemLine(){
     rowCounter++;
