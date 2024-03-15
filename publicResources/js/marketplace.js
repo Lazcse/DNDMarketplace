@@ -121,6 +121,7 @@ function reactChosenType(event){
     itemSelect.append(".chosen-select");
     typeSelect.removeEventListener("change",reactChosenType);
     typeSelect.addEventListener("change",changeChosenItem);
+    quantityField.addEventListener("change", updateLineTotalPrice);
     
 
 
@@ -298,6 +299,17 @@ function calculateSellingPrice(standardPrice, condition){
 function calculateLineTotalPrice(sellingPrice, quantity){
     return sellingPrice * quantity;
 
+}
+
+function updateLineTotalPrice(event){
+    let quantityField = event.target;
+    let idNumber = quantityField.id.replace(/\D/g, "");
+
+    let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
+    let lineTotalPriceField = document.getElementById("lineTotalPriceField" + idNumber);
+
+    lineTotalPriceField.setAttribute("value", calculateLineTotalPrice(sellingPriceField.value, quantityField.value));
+    updateTotalPriceField();
 }
 
 function updateTotalPriceField(){

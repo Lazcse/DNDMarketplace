@@ -1,14 +1,13 @@
 Work Tasks:
 
-Find a way to change the CSS of the searchable chosen select and change css to at least add margin
 
 Dynamic fetching of the real item prices
-Update total price for row on change in quantity
 
-Make totalPrice for a line update, when quantity changes
 
+
+
+Find a way to change the CSS of the searchable chosen select and change css to at least add margin
 Dynammically move output field for total price, when adding or removing a row 
-
 
 Make it possible to delete a row
 Create a clear button
