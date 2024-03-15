@@ -2,8 +2,6 @@ import process from "process";
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import e from 'express';
-
 const hostname = '127.0.0.1';
 const port = 3000;
 
