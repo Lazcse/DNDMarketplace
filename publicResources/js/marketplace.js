@@ -3,28 +3,28 @@ let rowCounter = -1;
 
 
 
-var completePriceField = document.createElement("input");
-completePriceField.setAttribute("type", "text");
-completePriceField.setAttribute("id", "completePriceField");
-completePriceField.setAttribute("class", "textField");
-completePriceField.setAttribute("value", "0");
-completePriceField.setAttribute("readonly", "true");
+var totalPriceField = document.createElement("input");
+totalPriceField.setAttribute("type", "text");
+totalPriceField.setAttribute("id", "totalPriceField");
+totalPriceField.setAttribute("class", "textField");
+totalPriceField.setAttribute("value", "0");
+totalPriceField.setAttribute("readonly", "true");
 
-var completePriceLabel = document.createElement("label");
-completePriceLabel.setAttribute("for", "completePriceField");
-completePriceLabel.setAttribute("class", "label");
-completePriceLabel.innerHTML = "Total Price: ";
+var totalPriceLabel = document.createElement("label");
+totalPriceLabel.setAttribute("for", "totalPriceField");
+totalPriceLabel.setAttribute("class", "label");
+totalPriceLabel.innerHTML = "Total Price: ";
 
-completePriceField.style.position = "fixed"; 
-completePriceField.style.bottom = "20%";
-completePriceField.style.right = "20%";
+totalPriceField.style.position = "fixed"; 
+totalPriceField.style.bottom = "20%";
+totalPriceField.style.right = "20%";
 
-completePriceLabel.style.position = "fixed"; 
-completePriceLabel.style.bottom = "25%";
-completePriceLabel.style.right = "20%";
+totalPriceLabel.style.position = "fixed"; 
+totalPriceLabel.style.bottom = "25%";
+totalPriceLabel.style.right = "20%";
 
-document.body.appendChild(completePriceField);
-document.body.appendChild(completePriceLabel);
+document.body.appendChild(totalPriceField);
+document.body.appendChild(totalPriceLabel);
 
 
 
@@ -105,14 +105,14 @@ function reactChosenType(event){
 
     document.body.appendChild(sellingPriceField);
     
-    var totalPriceField = document.createElement("input");
-    totalPriceField.setAttribute("type", "text");
-    totalPriceField.setAttribute("id", "totalPriceField" + rowCounter);
-    totalPriceField.setAttribute("class", "textField");
-    totalPriceField.setAttribute("value", "0");
-    totalPriceField.setAttribute("readonly", "true");
+    var lineTotalPriceField = document.createElement("input");
+    lineTotalPriceField.setAttribute("type", "text");
+    lineTotalPriceField.setAttribute("id", "lineTotalPriceField" + rowCounter);
+    lineTotalPriceField.setAttribute("class", "textField");
+    lineTotalPriceField.setAttribute("value", "0");
+    lineTotalPriceField.setAttribute("readonly", "true");
 
-    document.body.appendChild(totalPriceField);
+    document.body.appendChild(lineTotalPriceField);
 
     $('.chosen-select').on('change', updateInputFields);
     $(".chosen-select").chosen({width: "100px"});
@@ -148,8 +148,8 @@ function changeChosenItem(event){
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
     sellingPriceField.setAttribute("value", 1);
 
-    let totalPriceField = document.getElementById("totalPriceField" + idNumber);
-    totalPriceField.setAttribute("value", 1);
+    let lineTotalPriceField = document.getElementById("lineTotalPriceField" + idNumber);
+    lineTotalPriceField.setAttribute("value", 1);
 
     $('.chosen-select').trigger('chosen:updated');
 }
@@ -230,8 +230,10 @@ function updateInputFields(event){
 
     let quantityField = document.getElementById("quantityField" + idNumber);
 
-    let totalPriceField = document.getElementById("totalPriceField" + idNumber);
-    totalPriceField.setAttribute("value", calculateTotalPrice(sellingPriceField.value, quantityField.value));
+    let lineTotalPriceField = document.getElementById("lineTotalPriceField" + idNumber);
+    lineTotalPriceField.setAttribute("value", calculateLineTotalPrice(sellingPriceField.value, quantityField.value));
+    
+    updateTotalPriceField();
 }
 
 function findStandardPrice(item){
@@ -293,9 +295,21 @@ function calculateSellingPrice(standardPrice, condition){
     return price;
 }
 
-function calculateTotalPrice(sellingPrice, quantity){
+function calculateLineTotalPrice(sellingPrice, quantity){
     return sellingPrice * quantity;
 
+}
+
+function updateTotalPriceField(){
+    let totalPrice = 0;
+    for(let i = 0; i < rowCounter; i++){
+        let lineTotalPriceField = document.getElementById("lineTotalPriceField" + i);
+        if(lineTotalPriceField.value >= 0){
+            totalPrice += parseFloat(lineTotalPriceField.value);
+        }
+        
+    }
+    totalPriceField.setAttribute("value", totalPrice);
 }
 
 createItemLine();

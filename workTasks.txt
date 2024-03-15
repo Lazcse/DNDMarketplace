@@ -7,7 +7,6 @@ Update total price for row on change in quantity
 
 Make totalPrice for a line update, when quantity changes
 
-Dynamic summation of total prices
 Dynammically move output field for total price, when adding or removing a row 
 
 
