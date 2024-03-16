@@ -1,12 +1,5 @@
 Work Tasks:
 
-
-Dynamic fetching of the real gemstone prices
-Dynamic fetching of the real armor prices
-
-
-
-
 Find a way to change the CSS of the searchable chosen select and change css to at least add margin
 Dynammically move output field for total price, when adding or removing a row 
 

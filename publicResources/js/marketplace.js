@@ -115,7 +115,7 @@ function reactChosenType(event){
     document.body.appendChild(lineTotalPriceField);
 
     $('.chosen-select').on('change', updateInputFields);
-    $(".chosen-select").chosen({width: "100px"});
+    $(".chosen-select").chosen({width: "125px"});
     $(".chosen-select").chosen({margin: "10px"});
     $(".chosen-select").chosen();
     itemSelect.append(".chosen-select");
@@ -159,10 +159,10 @@ function createItemList(parentSelect, typeSelect){
 
     switch(typeSelect.value){
         case "Armor":
-            var itemList = ["Helmet","Chestplate","Boots"];
+            var itemList = armorList;
             break;
         case "Gemstone":
-            var itemList = ["Ruby","Sapphire","Emerald"];
+            var itemList = gemstoneList;
             break;
         case "Weapons":
             var itemList = weaponList;
@@ -496,7 +496,275 @@ weaponList = [
         }
     ]
 
+gemstoneList = [
+        {
+            "name": "Alexandrite",
+            "price": "500"
+        },
+        {
+            "name": "Amber",
+            "price": "100"
+        },
+        {
+            "name": "Amethyst",
+            "price": "100"
+        },
+        {
+            "name": "Aquamarine",
+            "price": "500"
+        },
+        {
+            "name": "Azurite",
+            "price": "10"
+        },
+        {
+            "name": "Banded agate",
+            "price": "10"
+        },
+        {
+            "name": "Black opal",
+            "price": "1000"
+        },
+        {
+            "name": "Black pearl",
+            "price": "500"
+        },
+        {
+            "name": "Black sapphire",
+            "price": "5000"
+        },
+        {
+            "name": "Bloodstone",
+            "price": "50"
+        },
+        {
+            "name": "Blue quartz",
+            "price": "10"
+        },
+        {
+            "name": "Blue sappphire",
+            "price": "1000"
+        },
+        {
+            "name": "Blue spinel",
+            "price": "500"
+        },
+        {
+            "name": "Carnelian",
+            "price": "50"
+        },
+        {
+            "name": "Chalcedony",
+            "price": "50"
+        },
+        {
+            "name": "Chrysoberyl",
+            "price": "100"
+        },
+        {
+            "name": "Chrysoprase",
+            "price": "50"
+        },
+        {
+            "name": "Citrine",
+            "price": "50"
+        },
+        {
+            "name": "Coral",
+            "price": "100"
+        },
+        {
+            "name": "Diamond",
+            "price": "5000"
+        },
+        {
+            "name": "Emerald",
+            "price": "1000"
+        },
+        {
+            "name": "Eye agate",
+            "price": "10"
+        },
+        {
+            "name": "Fire opal",
+            "price": "1000"
+        },
+        {
+            "name": "Garnet",
+            "price": "100"
+        },
+        {
+            "name": "Hematite",
+            "price": "10"
+        },
+        {
+            "name": "Jacinth",
+            "price": "5000"
+        },
+        {
+            "name": "Jade",
+            "price": "100"
+        },
+        {
+            "name": "Jasper",
+            "price": "50"
+        },
+        {
+            "name": "Jet",
+            "price": "100"
+        },
+        {
+            "name": "Lapis lazuli",
+            "price": "10"
+        },
+        {
+            "name": "Malachite",
+            "price": "10"
+        },
+        {
+            "name": "Moonstone",
+            "price": "50"
+        },
+        {
+            "name": "Moss agate",
+            "price": "10"
+        },
+        {
+            "name": "Obsidian",
+            "price": "10"
+        },
+        {
+            "name": "Onyx",
+            "price": "50"
+        },
+        {
+            "name": "opal",
+            "price": "1000"
+        },
+        {
+            "name": "Pearl",
+            "price": "100"
+        },
+        {
+            "name": "Peridot",
+            "price": "500"
+        },
+        {
+            "name": "Quartz",
+            "price": "50"
+        },
+        {
+            "name": "Rhodochrosite",
+            "price": "10"
+        },
+        {
+            "name": "Ruby",
+            "price": "5000"
+        },
+        {
+            "name": "Sadonyx",
+            "price": "50"
+        },
+        {
+            "name": "Spinel",
+            "price": "100"
+        },
+        {
+            "name": "Star rose quartz",
+            "price": "50"
+        },
+        {
+            "name": "Star ruby",
+            "price": "1000"
+        },
+        {
+            "name": "Star sapphire",
+            "price": "1000"
+        },
+        {
+            "name": "Tiger eye",
+            "price": "10"
+        },
+        {
+            "name": "Topaz",
+            "price": "500"
+        },
+        {
+            "name": "Tourmaline",
+            "price": "100"
+        },
+        {
+            "name": "Turquoise",
+            "price": "10"
+        },
+        {
+            "name": "Yellow sapphire",
+            "price": "1000"
+        },
+        {
+            "name": "Zircon",
+            "price": "50"
+        }
+    ]
 
+armorList = [
+        {
+            "name": "Breastplate",
+            "price": "400"
+        },
+        {
+            "name": "Chain mail",
+            "price": "75"
+        },
+        {
+            "name": "Chain shirt",
+            "price": "50"
+        },
+        {
+            "name": "Half plate",
+            "price": "750"
+        },
+        {
+            "name": "Hide",
+            "price": "10"
+        },
+        {
+            "name": "Leather",
+            "price": "10"
+        },
+        {
+            "name": "Padded",
+            "price": "5"
+        },
+        {
+            "name": "Plate",
+            "price": "1500"
+        },
+        {
+            "name": "Pride silk outfit",
+            "price": "500"
+        },
+        {
+            "name": "Ring mail",
+            "price": "30"
+        },
+        {
+            "name": "Scale mail",
+            "price": "50"
+        },
+        {
+            "name": "Spiked armor",
+            "price": "75"
+        },
+        {
+            "name": "Splint",
+            "price": "200"
+        },
+        {
+            "name": "Studded leather",
+            "price": "45"
+        }
+    ]
 
 
 
