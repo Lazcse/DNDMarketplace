@@ -1,7 +1,8 @@
 Work Tasks:
 
 
-Dynamic fetching of the real item prices
+Dynamic fetching of the real gemstone prices
+Dynamic fetching of the real armor prices
 
 
 

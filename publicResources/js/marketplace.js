@@ -165,13 +165,13 @@ function createItemList(parentSelect, typeSelect){
             var itemList = ["Ruby","Sapphire","Emerald"];
             break;
         case "Weapons":
-            var itemList = ["Crossbow","Longsword","Short Sword"];
+            var itemList = weaponList;
             break;
         default:
             var itemList = [];
             break;
     }
-    createSelectList(parentSelect, itemList);
+    createSelectListFromJSON(parentSelect, itemList);
 }
 
 function createConditionList(parentSelect, typeSelect){
@@ -188,11 +188,11 @@ function createConditionList(parentSelect, typeSelect){
             break;
     }
 
-    createSelectList(parentSelect, conditionList);
+    createSelectListFromArray(parentSelect, conditionList);
 
 }
 
-function createSelectList(parentSelect, list){
+function createSelectListFromArray(parentSelect, list){
     var option = document.createElement("option");
         option.setAttribute("value", "");
         option.text = "-";
@@ -203,6 +203,21 @@ function createSelectList(parentSelect, list){
         var option = document.createElement("option");
         option.setAttribute("value", list[i]);
         option.text = list[i];
+        parentSelect.appendChild(option);
+    }
+}
+
+function createSelectListFromJSON(parentSelect, list){
+    var option = document.createElement("option");
+        option.setAttribute("value", "");
+        option.text = "-";
+        parentSelect.appendChild(option);
+
+    //Create and append the options
+    for (var i = 0; i < list.length; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", list[i].name);
+        option.text = list[i].name;
         parentSelect.appendChild(option);
     }
 }
@@ -224,7 +239,7 @@ function updateInputFields(event){
     console.log(condition.value);
 
     let standardPriceField = document.getElementById("standardPriceField" + idNumber);
-    standardPriceField.setAttribute("value", findStandardPrice(item.value));
+    standardPriceField.setAttribute("value", findStandardPrice(item));
 
     let sellingPriceField = document.getElementById("sellingPriceField" + idNumber);
     sellingPriceField.setAttribute("value", calculateSellingPrice(standardPriceField.value, condition.value));
@@ -239,38 +254,23 @@ function updateInputFields(event){
 
 function findStandardPrice(item){
     let price = 0;
-    switch(item){
-        case "Helmet":
-            price = 50;
-            break;
-        case "Chestplate":
-            price = 200;
-            break;
-        case "Boots":
-            price = 25;
-            break;
-        case "Ruby":
-            price = 250;
-            break;
-        case "Sapphire":
-            price = 150;
-            break;
-        case "Emerald":
-            price = 200;
-            break;
-        case "Crossbow":
-            price = 75;
-            break;
-        case "Longsword":
-            price = 50;
-            break;
-        case "Short Sword":
-            price = 10;
-            break;
-        default:
-            price = 0;
-            break;
+    let itemList;
+
+    let idNumber = item.id.replace(/\D/g, "");
+    let itemType = document.getElementById("typeSelect" + idNumber).value;
+    if(itemType == "Weapons"){
+        itemList = weaponList;
+    }else if(itemType == "Armor"){
+        itemList = armorList;
+    }else if(itemType == "Gemstone"){
+        itemList = gemstoneList;
     }
+
+    for(let i = 0; i < itemList.length; i++){
+            if(itemList[i].name == item.value){
+                price = itemList[i].price;
+            }
+        }
     return price;
 
 }
@@ -325,3 +325,180 @@ function updateTotalPriceField(){
 }
 
 createItemLine();
+
+
+
+
+
+
+
+
+weaponList = [
+        {
+            "name": "Battleaxe",
+            "price": "10"
+        },
+        {
+            "name": "Blowgun",
+            "price": "10"
+        },
+        {
+            "name": "Club",
+            "price": "0.1"
+        },
+        {
+            "name": "Crossbow, hand",
+            "price": "75"
+        },
+        {
+            "name": "Crossbow, heavy",
+            "price": "50"
+        },
+        {
+            "name": "Crossbow, light",
+            "price": "25"
+        },
+        {
+            "name": "Dagger",
+            "price": "2"
+        },
+        {
+            "name": "Dart",
+            "price": "0.05"
+        },
+        {
+            "name": "Double-bladed scimitar",
+            "price": "100"
+        },
+        {
+            "name": "Flail",
+            "price": "10"
+        },
+        {
+            "name": "Glaive",
+            "price": "20"
+        },
+        {
+            "name": "Greataxe",
+            "price": "30"
+        },
+        {
+            "name": "Greatclub",
+            "price": "0.2"
+        },
+        {
+            "name": "Greatsword",
+            "price": "50"
+        },
+        {
+            "name": "Halberd",
+            "price": "20"
+        },
+        {
+            "name": "Handaxe",
+            "price": "5"
+        },
+        {
+            "name": "Hoopak",
+            "price": "1"
+        },
+        {
+            "name": "Javelin",
+            "price": "0.5"
+        },
+        {
+            "name": "Lance",
+            "price": "10"
+        },
+        {
+            "name": "Light hammer",
+            "price": "2"
+        },
+        {
+            "name": "Longbow",
+            "price": "50"
+        },
+        {
+            "name": "Longsword",
+            "price": "15"
+        },
+        {
+            "name": "Mace",
+            "price": "5"
+        },
+        {
+            "name": "Maul",
+            "price": "10"
+        },
+        {
+            "name": "Morningstar",
+            "price": "15"
+        },
+        {
+            "name": "Net",
+            "price": "1"
+        },
+        {
+            "name": "Pike",
+            "price": "5"
+        },
+        {
+            "name": "Quarterstaff",
+            "price": "0.2"
+        },
+        {
+            "name": "Rapier",
+            "price": "25"
+        },
+        {
+            "name": "Scimitar",
+            "price": "25"
+        },
+        {
+            "name": "Shortbow",
+            "price": "25"
+        },
+        {
+            "name": "Shortsword",
+            "price": "10"
+        },
+        {
+            "name": "Sickle",
+            "price": "1"
+        },
+        {
+            "name": "Sling",
+            "price": "0.1"
+        },
+        {
+            "name": "Spear",
+            "price": "1"
+        },
+        {
+            "name": "Trident",
+            "price": "5"
+        },
+        {
+            "name": "War pick",
+            "price": "5"
+        },
+        {
+            "name": "Warhammer",
+            "price": "15"
+        },
+        {
+            "name": "Whip",
+            "price": "2"
+        },
+        {
+            "name": "Yklawa",
+            "price": "1"
+        }
+    ]
+
+
+
+
+
+
+
