@@ -2,7 +2,6 @@ let price = 0;
 let rowCounter = -1;
 
 
-
 var totalPriceField = document.createElement("input");
 totalPriceField.setAttribute("type", "text");
 totalPriceField.setAttribute("id", "totalPriceField");
@@ -123,7 +122,6 @@ function reactChosenType(event){
     typeSelect.addEventListener("change",changeChosenItem);
     quantityField.addEventListener("change", updateLineTotalPrice);
     
-
 
     createItemLine();
 }
@@ -325,12 +323,6 @@ function updateTotalPriceField(){
 }
 
 createItemLine();
-
-
-
-
-
-
 
 
 weaponList = [
@@ -765,8 +757,3 @@ armorList = [
             "price": "45"
         }
     ]
-
-
-
-
-
