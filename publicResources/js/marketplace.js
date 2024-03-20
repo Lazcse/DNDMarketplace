@@ -92,6 +92,7 @@ function reactChosenType(event){
     standardPriceField.setAttribute("class", "textField");
     standardPriceField.setAttribute("value", "0");
     standardPriceField.setAttribute("readonly", "true");
+    standardPriceField.setAttribute("style", "margin-left: 60px;");
 
     document.body.appendChild(standardPriceField);
 
@@ -101,6 +102,7 @@ function reactChosenType(event){
     sellingPriceField.setAttribute("class", "textField");
     sellingPriceField.setAttribute("value", "0");
     sellingPriceField.setAttribute("readonly", "true");
+    sellingPriceField.setAttribute("style", "margin-left: 90px;");
 
     document.body.appendChild(sellingPriceField);
     
@@ -110,6 +112,7 @@ function reactChosenType(event){
     lineTotalPriceField.setAttribute("class", "textField");
     lineTotalPriceField.setAttribute("value", "0");
     lineTotalPriceField.setAttribute("readonly", "true");
+    lineTotalPriceField.setAttribute("style", "margin-left: 90px;");
 
     document.body.appendChild(lineTotalPriceField);
 
