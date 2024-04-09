@@ -282,16 +282,16 @@ function calculateSellingPrice(standardPrice, condition){
     switch(condition){
         case "Used":
         case "Flawed":
-            price = standardPrice * 0.50;
+            price = standardPrice * 0.40;
             break;
         case "Tattered":
         case "Cracked":
-            price = standardPrice * 0.25;
+            price = standardPrice * 0.20;
             break;
         case "New":
         case "Perfect":
         default:
-            price = standardPrice;
+            price = standardPrice * 0.80;
             break;
     }
     return price;
