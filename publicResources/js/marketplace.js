@@ -1,6 +1,8 @@
 let price = 0;
 let rowCounter = -1;
 
+let sellingPriceStyle = document.getElementById("priceStyle");
+sellingPriceStyle.addEventListener("change", updateAllfields);
 
 var totalPriceField = document.createElement("input");
 totalPriceField.setAttribute("type", "text");
@@ -228,12 +230,23 @@ function removeChildrenElements(parentElement){
         parentElement.lastChild.remove();
     }
 }
-
+function updateAllfields(){
+    for(let i = 0; i < rowCounter; i++){
+        updateFieldsById(i);
+    }
+    updateTotalPriceField();
+}
 
 function updateInputFields(event){
     let select = event.target;
     let idNumber = select.id.replace(/\D/g, "");
 
+    updateFieldsById(idNumber);
+    
+    updateTotalPriceField();
+}
+
+function updateFieldsById(idNumber){
     let item = document.getElementById("itemSelect" + idNumber);
     let condition = document.getElementById("conditionSelect" + idNumber);
     console.log(item.value);
@@ -249,8 +262,6 @@ function updateInputFields(event){
 
     let lineTotalPriceField = document.getElementById("lineTotalPriceField" + idNumber);
     lineTotalPriceField.setAttribute("value", calculateLineTotalPrice(sellingPriceField.value, quantityField.value));
-    
-    updateTotalPriceField();
 }
 
 function findStandardPrice(item){
@@ -278,20 +289,28 @@ function findStandardPrice(item){
 
 function calculateSellingPrice(standardPrice, condition){
     let price = 0;
+    let lowPriceProcentage = 0.2;
+    let mediumPriceProcentage = 0.4;
+    let highPriceProcentage = 0.8;
+    let priceStyle = document.getElementById("priceStyle").value;
+    if(priceStyle == "1"){
+        lowPriceProcentage = 0.25;
+        mediumPriceProcentage = 0.5;
+    }
 
     switch(condition){
         case "Used":
         case "Flawed":
-            price = standardPrice * 0.40;
+            price = standardPrice * mediumPriceProcentage;
             break;
         case "Tattered":
         case "Cracked":
-            price = standardPrice * 0.20;
+            price = standardPrice * lowPriceProcentage;
             break;
         case "New":
         case "Perfect":
         default:
-            price = standardPrice * 0.80;
+            price = standardPrice * highPriceProcentage;
             break;
     }
     return price;
