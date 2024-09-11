@@ -206,6 +206,20 @@ function createConditionList(parentSelect, typeSelect) {
       break;
   }
 
+  var procentageConditionList = [
+    "100%",
+    "90%",
+    "80%",
+    "70%",
+    "60%",
+    "50%",
+    "40%",
+    "30%",
+    "20%",
+    "10%",
+  ];
+  conditionList = conditionList.concat(procentageConditionList);
+
   createSelectListFromArray(parentSelect, conditionList);
 }
 
@@ -336,6 +350,37 @@ function calculateSellingPrice(standardPrice, condition) {
     case "Ruined":
       price = standardPrice * lowPriceProcentage;
       break;
+    case "100%":
+      price = standardPrice;
+      break;
+    case "90%":
+      price = standardPrice * 0.9;
+      break;
+    case "80%":
+      price = standardPrice * 0.8;
+      break;
+    case "70%":
+      price = standardPrice * 0.7;
+      break;
+    case "60%":
+      price = standardPrice * 0.6;
+      break;
+    case "50%":
+      price = standardPrice * 0.5;
+      break;
+    case "40%":
+      price = standardPrice * 0.4;
+      break;
+    case "30%":
+      price = standardPrice * 0.3;
+      break;
+    case "20%":
+      price = standardPrice * 0.2;
+      break;
+    case "10%":
+      price = standardPrice * 0.1;
+      break;
+
     case "New":
     case "Perfect":
     case "Pristine":
