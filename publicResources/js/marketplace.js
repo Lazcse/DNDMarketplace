@@ -29,7 +29,14 @@ document.body.appendChild(totalPriceLabel);
 
 function createItemLine() {
   rowCounter++;
-  var itemTypes = ["Choose Type", "Armor", "Gemstone", "Weapons"];
+  var itemTypes = [
+    "Choose Type",
+    "Armor",
+    "Gemstone",
+    "Weapons",
+    "Art",
+    "Misc",
+  ];
   const breakLine = document.createElement("br");
   document.body.appendChild(breakLine);
 
@@ -172,6 +179,9 @@ function createItemList(parentSelect, typeSelect) {
     case "Weapons":
       var itemList = weaponList;
       break;
+    case "Art":
+      var itemList = artList;
+      break;
     default:
       var itemList = [];
       break;
@@ -187,6 +197,9 @@ function createConditionList(parentSelect, typeSelect) {
       break;
     case "Gemstone":
       var conditionList = ["Perfect", "Flawed", "Cracked"];
+      break;
+    case "Art":
+      var conditionList = ["Pristine", "Damaged", "Ruined"];
       break;
     default:
       var conditionList = [];
@@ -289,6 +302,8 @@ function findStandardPrice(item) {
     itemList = armorList;
   } else if (itemType == "Gemstone") {
     itemList = gemstoneList;
+  } else if (itemType == "Art") {
+    itemList = artList;
   }
 
   for (let i = 0; i < itemList.length; i++) {
@@ -313,14 +328,17 @@ function calculateSellingPrice(standardPrice, condition) {
   switch (condition) {
     case "Used":
     case "Flawed":
+    case "Damaged":
       price = standardPrice * mediumPriceProcentage;
       break;
     case "Tattered":
     case "Cracked":
+    case "Ruined":
       price = standardPrice * lowPriceProcentage;
       break;
     case "New":
     case "Perfect":
+    case "Pristine":
     default:
       price = standardPrice * highPriceProcentage;
       break;
@@ -795,5 +813,28 @@ armorList = [
   {
     name: "Studded leather",
     price: "45",
+  },
+];
+
+artList = [
+  {
+    name: "25gp art object",
+    price: "25",
+  },
+  {
+    name: "250gp art object",
+    price: "250",
+  },
+  {
+    name: "750gp art object",
+    price: "750",
+  },
+  {
+    name: "2500gp art object",
+    price: "2500",
+  },
+  {
+    name: "7500gp art object",
+    price: "7500",
   },
 ];
