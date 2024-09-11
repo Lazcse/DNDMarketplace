@@ -2,8 +2,8 @@ import process from "process";
 import express from 'express';
 import bodyParser from 'body-parser';
 
-const hostname = '0.0.0.0';
-const port = 1000;
+const hostname = '127.0.0.1';
+const port = 3000;
 
 const rootFileSystem = process.cwd();
 
