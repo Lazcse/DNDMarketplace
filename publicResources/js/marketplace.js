@@ -18,14 +18,37 @@ totalPriceLabel.innerHTML = "Total Price: ";
 
 totalPriceField.style.position = "fixed";
 totalPriceField.style.bottom = "20%";
-totalPriceField.style.right = "20%";
+totalPriceField.style.right = "15%";
 
 totalPriceLabel.style.position = "fixed";
 totalPriceLabel.style.bottom = "25%";
-totalPriceLabel.style.right = "20%";
+totalPriceLabel.style.right = "15%";
 
 document.body.appendChild(totalPriceField);
 document.body.appendChild(totalPriceLabel);
+
+var pricePlayerField = document.createElement("input");
+pricePlayerField.setAttribute("type", "text");
+pricePlayerField.setAttribute("id", "pricePlayerField");
+pricePlayerField.setAttribute("class", "textField");
+pricePlayerField.setAttribute("value", "0");
+pricePlayerField.setAttribute("readonly", "true");
+
+var pricePlayerLabel = document.createElement("label");
+pricePlayerLabel.setAttribute("for", "pricePlayerField");
+pricePlayerLabel.setAttribute("class", "label");
+pricePlayerLabel.innerHTML = "Price Per Player: ";
+
+pricePlayerField.style.position = "fixed";
+pricePlayerField.style.bottom = "10%";
+pricePlayerField.style.right = "15%";
+
+pricePlayerLabel.style.position = "fixed";
+pricePlayerLabel.style.bottom = "15%";
+pricePlayerLabel.style.right = "15%";
+
+document.body.appendChild(pricePlayerField);
+document.body.appendChild(pricePlayerLabel);
 
 function createItemLine() {
   rowCounter++;
