@@ -281,6 +281,7 @@ function removeChildrenElements(parentElement) {
     parentElement.lastChild.remove();
   }
 }
+
 function updateAllfields() {
   for (let i = 0; i < rowCounter; i++) {
     updateFieldsById(i);
@@ -447,6 +448,16 @@ function updateTotalPriceField() {
     }
   }
   totalPriceField.setAttribute("value", totalPrice);
+  updatePlayerPrice();
+}
+
+function updatePlayerPrice() {
+  let playerPrice = 0;
+
+  let totalPrice = totalPriceField.value;
+  let playerNumber = document.getElementById("nrPlayers").value;
+  playerPrice = totalPrice / playerNumber;
+  pricePlayerField.setAttribute("value", playerPrice);
 }
 
 createItemLine();
