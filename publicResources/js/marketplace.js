@@ -4,6 +4,9 @@ let rowCounter = -1;
 let sellingPriceStyle = document.getElementById("priceStyle");
 sellingPriceStyle.addEventListener("change", updateAllfields);
 
+let playerCount = document.getElementById("nrPlayers");
+playerCount.addEventListener("change", updatePlayerPrice);
+
 var totalPriceField = document.createElement("input");
 totalPriceField.setAttribute("type", "text");
 totalPriceField.setAttribute("id", "totalPriceField");
