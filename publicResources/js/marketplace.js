@@ -465,7 +465,7 @@ function updatePlayerPrice() {
 
 createItemLine();
 
-weaponList = [
+let weaponList = [
   {
     name: "Battleaxe",
     price: "10",
@@ -628,7 +628,7 @@ weaponList = [
   },
 ];
 
-gemstoneList = [
+let gemstoneList = [
   {
     name: "Alexandrite",
     price: "500",
@@ -839,7 +839,7 @@ gemstoneList = [
   },
 ];
 
-armorList = [
+let armorList = [
   {
     name: "Breastplate",
     price: "400",
@@ -898,7 +898,7 @@ armorList = [
   },
 ];
 
-artList = [
+let artList = [
   {
     name: "25gp art object",
     price: "25",
